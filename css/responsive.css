@@ -1,0 +1,454 @@
+/* ==============================================================
+   VENERA — Responsive Stylesheet
+   --------------------------------------------------------------
+   Breakpoints (largest → smallest):
+     1200px  — small desktop / large tablet
+      900px  — tablet / small laptop
+      560px  — small phone
+      400px  — very small phone
+   Also: prefers-reduced-motion accessibility override
+   ============================================================== */
+
+
+/* ==============================================================
+   BREAKPOINT: 1200px — small desktop / large tablet
+   ============================================================== */
+@media (max-width: 1200px) {
+
+  /* --- Category grid (homepage) --- */
+  .cats-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 420px;
+  }
+  .cats-grid .cat-card:first-child {
+    grid-column: span 2;
+  }
+
+  /* --- Product grid (homepage) --- */
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* --- Editorial split --- */
+  .editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .editorial-imgs {
+    height: 520px;
+  }
+
+  /* --- Journal grid --- */
+  .journal-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .journal-feature {
+    grid-column: span 2;
+  }
+
+  /* --- Footer --- */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  /* --- Category page (women / men / children) --- */
+  .scroller-v {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .page-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .page-hero-visual {
+    max-width: 480px;
+  }
+}
+
+
+/* ==============================================================
+   BREAKPOINT: 1000px — nav dropdown sizing
+   ============================================================== */
+@media (max-width: 1000px) {
+  .nav-drop {
+    min-width: 500px;
+    padding: 1.4rem;
+    gap: 1.5rem;
+  }
+}
+
+
+/* ==============================================================
+   BREAKPOINT: 900px — tablet / small laptop
+   ============================================================== */
+@media (max-width: 900px) {
+
+  /* --- Layout containers --- */
+  .wrap,
+  .wrap-mid {
+    padding: 0 1.75rem;
+  }
+  .jump-track {
+    padding: 0 1.75rem;
+  }
+
+  /* --- Navigation --- */
+  .nav-main {
+    display: none;
+  }
+
+  /* Menu toggle — two contexts */
+
+  /* Homepage header (transparent over hero) */
+  .menu-toggle {
+    display: flex;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .header.scrolled .menu-toggle {
+    border-color: var(--line);
+    color: var(--ink);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .menu-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Category page header (always has background) */
+  .menu-toggle {
+    border: 1px solid var(--line-2);
+  }
+
+  /* --- Homepage: category grid collapses --- */
+  .cats-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 380px;
+  }
+  .cats-grid .cat-card:first-child {
+    grid-column: span 1;
+  }
+
+  /* --- Homepage: product grid --- */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  /* --- Homepage: newsletter --- */
+  .news-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .news-form {
+    /* handled at 560px */
+  }
+
+  /* --- Homepage: editorial stats --- */
+  .editorial-stats {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .editorial-stat .num {
+    font-size: 1.65rem;
+  }
+
+  /* --- Homepage: journal --- */
+  .journal-grid {
+    grid-template-columns: 1fr;
+  }
+  .journal-feature {
+    grid-column: span 1;
+  }
+
+  /* --- Homepage: footer --- */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* --- Homepage: quote --- */
+  .quote {
+    padding: 5rem 0;
+  }
+  .quote-mark {
+    font-size: 3rem;
+  }
+
+  /* --- Homepage: hero HUD corners --- */
+  .hero-hud.tl,
+  .hero-hud.tr {
+    top: 6rem;
+  }
+  .hero-hud.tl {
+    left: 1.75rem;
+  }
+  .hero-hud.tr {
+    right: 1.75rem;
+  }
+  .hero-hud.bl {
+    left: 1.75rem;
+  }
+  .hero-hud.br {
+    right: 1.75rem;
+  }
+
+  /* --- Category page: vertical scroller → horizontal --- */
+  .scroller-v {
+    display: flex;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 1.75rem;
+    padding: 0.5rem 1.75rem 1.5rem;
+    margin: 0 -1.75rem;
+    gap: 1rem;
+  }
+  .scroller-v .h-card {
+    flex: 0 0 auto;
+    width: 240px;
+    scroll-snap-align: start;
+  }
+
+  /* --- Category page: collection head stacks --- */
+  .coll {
+    padding: 3.5rem 0 3rem;
+  }
+  .coll-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .coll-head-right {
+    align-items: flex-start;
+  }
+
+  /* --- Category page: horizontal scroller padding --- */
+  .scroller-h {
+    padding: 0.5rem 1.75rem 1.5rem;
+    margin: 0 -1.75rem;
+    scroll-padding-left: 1.75rem;
+  }
+
+  /* --- Category page: search input --- */
+  .search-input-wrap {
+    min-width: 0;
+  }
+}
+
+
+/* ==============================================================
+   BREAKPOINT: 560px — small phone
+   ============================================================== */
+@media (max-width: 560px) {
+
+  /* --- Layout containers --- */
+  .wrap,
+  .wrap-mid {
+    padding: 0 1.25rem;
+  }
+  .jump-track {
+    padding: 0 1.25rem;
+  }
+
+  /* --- Header --- */
+  .header {
+    padding: 0.75rem 0;
+  }
+  .brand-name {
+    font-size: 1.3rem;
+  }
+  .brand-sub {
+    font-size: 0.5rem;
+  }
+
+  /* --- Breadcrumb (category pages) --- */
+  .breadcrumb {
+    margin-top: 60px;
+    padding: 0.85rem 0;
+  }
+  .breadcrumb ol {
+    font-size: 0.58rem;
+  }
+
+  /* --- Homepage hero --- */
+  .hero {
+    min-height: 640px;
+    padding-bottom: 2rem;
+  }
+  .hero-title {
+    font-size: clamp(2.5rem, 13vw, 4rem);
+  }
+  .hero-sub {
+    font-size: 0.95rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 320px;
+  }
+  .hero-actions .btn {
+    justify-content: center;
+  }
+  .hero-top {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+  .hero-foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .hero-hud.tl,
+  .hero-hud.tr {
+    display: none;
+  }
+  .hero-marker {
+    display: none;
+  }
+
+  /* --- Homepage: product grid --- */
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- Homepage: ticker --- */
+  .ticker-item {
+    font-size: 1.2rem;
+  }
+
+  /* --- Homepage: newsletter --- */
+  .news-form {
+    padding: 1.5rem;
+  }
+
+  /* --- Homepage: editorial --- */
+  .editorial-imgs {
+    height: 380px;
+  }
+  .editorial-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* --- Homepage: section head --- */
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .section-head .meta {
+    font-size: 0.6rem;
+    gap: 1rem;
+  }
+
+  /* --- Category page hero --- */
+  .page-hero {
+    padding: 3rem 0 3rem;
+  }
+  .page-hero h1 {
+    font-size: clamp(2.25rem, 12vw, 3.5rem);
+  }
+  .page-hero-stats {
+    gap: 1.5rem;
+  }
+  .stat .num {
+    font-size: 1.5rem;
+  }
+
+  /* --- Category page: collection --- */
+  .coll {
+    padding: 3rem 0 2.5rem;
+  }
+  .scroller-h {
+    padding: 0.5rem 1.25rem 1.5rem;
+    margin: 0 -1.25rem;
+    scroll-padding-left: 1.25rem;
+    gap: 1rem;
+  }
+
+  /* --- Category page: cards --- */
+  .h-card {
+    width: 240px;
+  }
+  .card-name {
+    font-size: 1rem;
+  }
+
+  /* --- Category page: jump nav --- */
+  .jump-nav {
+    top: 52px;
+    padding: 0.65rem 0;
+  }
+  .jump-pill {
+    font-size: 0.58rem;
+    padding: 0.45rem 0.8rem;
+  }
+
+  /* --- Category page: toast --- */
+  .toast-container {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+  }
+  .toast {
+    min-width: 0;
+  }
+
+  /* --- Category page: section search --- */
+  .search-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-input-wrap {
+    max-width: 100%;
+  }
+  .search-clear {
+    justify-content: center;
+  }
+}
+
+
+/* ==============================================================
+   BREAKPOINT: 400px — very small phone
+   ============================================================== */
+@media (max-width: 400px) {
+  .h-card {
+    width: 220px;
+  }
+}
+
+
+/* ==============================================================
+   ACCESSIBILITY — reduced motion
+   ============================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide,
+  .hero-slide img,
+  .hero-dots .dot::after,
+  .hero-title .hl > span,
+  .hero-scroll .line::after {
+    animation: none !important;
+  }
+  .hero-slide:nth-child(1) {
+    opacity: 1;
+  }
+}
